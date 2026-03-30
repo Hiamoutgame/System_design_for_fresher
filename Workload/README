@@ -13,3 +13,12 @@
 
 pod hiểu đơn giản là 1 con backend
 Deployment: Là việc triễn khai pod ở số lượng lớn theo replica. Và deployment sẽ ensure rằng việc là số port luôn bằng số replica => nếu pod chết sẽ tự động restart lại pod cho đến khi bằng số lượng replica
+
+## Ghi chú thực hành
+
+- Đã apply: Deployment, ReplicaSet, DaemonSet, Job, CronJob, StatefulSet (theo thứ tự trên).
+- ReplicaSet: tạo 3 pod, thử xóa pod lẻ → RS sinh pod mới để giữ đủ replicas; có thể scale RS bằng `kubectl scale rs frontend --replicas=N`.
+- DaemonSet: chạy trong `kube-system`, 1 pod trên mỗi node (Minikube: 1 pod); xóa pod → controller tạo lại.
+- Job: `kubectl diff/apply -f Job.yaml`, chạy một lần, log xem với `kubectl logs job/pi`; khi chưa tồn tại diff hiển thị toàn bộ manifest.
+- CronJob: apply `CronJob.yaml`, mỗi phút tạo Job mới; quan sát bằng `kubectl get jobs,pods -w`, `kubectl get cronjob hello -o wide` (cột LAST SCHEDULE thay đổi).
+- Pod thử nghiệm: `hello-pod` dùng image postgres/redis; đã gặp ErrImagePull với image `kanibot/hello:v1` vì repo không tồn tại/public; thay bằng image public (nginx, redis:alpine, postgres) thì kéo được.
