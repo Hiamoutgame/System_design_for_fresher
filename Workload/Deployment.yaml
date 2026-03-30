@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: nginx-deployment # tên Deployment
   labels:
-    app: nginx
+    app: nginx # nhãn dùng chung với selector/pod
 spec:
-  replicas: 3
+  replicas: 3 # số pod mong muốn
   selector:
     matchLabels:
-      app: nginx
+      app: nginx # chọn pod có label này
   template:
     metadata:
       labels:
-        app: nginx
+        app: nginx # gán label cho pod sinh ra
     spec:
       containers:
         - name: nginx
           image: nginx:1.14.2
           ports:
-            - containerPort: 80
+            - containerPort: 80 # mở port trong container

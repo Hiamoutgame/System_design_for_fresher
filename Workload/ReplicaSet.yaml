@@ -1,20 +1,19 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: frontend
+  name: frontend # tên ReplicaSet
   labels:
     app: guestbook
     tier: frontend
 spec:
-  # modify replicas according to your case
-  replicas: 3
+  replicas: 3 # số pod được duy trì
   selector:
     matchLabels:
-      tier: frontend
+      tier: frontend # chọn pod có label này
   template:
     metadata:
       labels:
-        tier: frontend
+        tier: frontend # label pod mới
     spec:
       containers:
         - name: php-redis

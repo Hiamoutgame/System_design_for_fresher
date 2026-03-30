@@ -1,0 +1,12 @@
+# Hướng dẫn nhanh (Minikube)
+
+1. Khởi động cụm: `minikube start` (sửa PATH nếu trước đó lỗi 127). Đặt namespace: `kubectl create ns demo && kubectl config set-context --current --namespace=demo`.
+2. Apply manifest theo thứ tự tham khảo:
+   - `kubectl apply -f Deployment.yaml` (app chính nginx 3 replica).
+   - `kubectl apply -f ReplicaSet.yaml` (frontend PHP Redis 3 pod để quan sát khả năng duy trì số lượng).
+   - `kubectl apply -f DaemonSet.yaml` (fluentd log trên mỗi node; chạy ở kube-system nếu giữ nguyên namespace).
+   - `kubectl apply -f Job.yaml` (chạy một lần tính pi, không restart).
+   - `kubectl apply -f CronJob.yaml` (lịch mỗi phút in timestamp).
+   - `kubectl apply -f StatefulSet.yaml` (nginx stateful + headless service, tạo PVC mỗi pod).
+3. Kiểm tra: `kubectl get all -A`, `kubectl get pods -o wide`, `kubectl logs deploy/nginx-deployment`, `kubectl get pvc`.
+4. Xóa tất cả khi xong: `kubectl delete -f .` trong thư mục Workload hoặc `kubectl delete ns demo` nếu đã tách namespace.

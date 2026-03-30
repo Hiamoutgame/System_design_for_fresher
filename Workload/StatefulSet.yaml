@@ -8,7 +8,7 @@ spec:
   ports:
     - port: 80
       name: web
-  clusterIP: None
+  clusterIP: None # headless service cho StatefulSet
   selector:
     app: nginx
 ---
@@ -19,14 +19,14 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: nginx # has to match .spec.template.metadata.labels
-  serviceName: "nginx"
-  replicas: 3 # by default is 1
-  minReadySeconds: 10 # by default is 0
+      app: nginx # phải trùng với template labels
+  serviceName: "nginx" # sử dụng headless service
+  replicas: 3 # số pod stateful
+  minReadySeconds: 10 # đợi pod ready trước khi rollout tiếp
   template:
     metadata:
       labels:
-        app: nginx # has to match .spec.selector.matchLabels
+        app: nginx
     spec:
       terminationGracePeriodSeconds: 10
       containers:

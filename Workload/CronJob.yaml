@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: hello
 spec:
-  schedule: "* * * * *"
+  schedule: "* * * * *" # chạy mỗi phút
   jobTemplate:
     spec:
       template:
@@ -16,4 +16,4 @@ spec:
                 - /bin/sh
                 - -c
                 - date; echo Hello from the Kubernetes cluster
-          restartPolicy: OnFailure
+          restartPolicy: OnFailure # chỉ restart khi job fail
