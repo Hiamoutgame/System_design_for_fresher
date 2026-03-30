@@ -47,3 +47,5 @@ spec:
         resources:
           requests:
             storage: 1Gi
+
+#StatefulSet (+ headless Service): chạy ứng dụng stateful, giữ định danh ổn định cho từng Pod, mỗi Pod có PVC riêng, khởi tạo/scale tuần tự

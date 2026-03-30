@@ -40,3 +40,6 @@ spec:
         - name: varlog
           hostPath:
             path: /var/log # map thư mục log của node
+
+
+#DaemonSet: đảm bảo mỗi node (kể cả control-plane nếu cho phép) luôn có 1 Pod (fluentd đọc log).

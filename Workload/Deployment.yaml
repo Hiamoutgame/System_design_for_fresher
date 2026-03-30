@@ -19,3 +19,5 @@ spec:
           image: nginx:1.14.2
           ports:
             - containerPort: 80 # mở port trong container
+#Deployment: quản lý phiên bản/scale của app stateless (nginx).
+#Hỗ trợ rollout/rollback, tự tạo ReplicaSet ẩn bên dưới, thay thế Pod khi fail.

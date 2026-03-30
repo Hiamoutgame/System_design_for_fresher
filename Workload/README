@@ -10,3 +10,6 @@
    - `kubectl apply -f StatefulSet.yaml` (nginx stateful + headless service, tạo PVC mỗi pod).
 3. Kiểm tra: `kubectl get all -A`, `kubectl get pods -o wide`, `kubectl logs deploy/nginx-deployment`, `kubectl get pvc`.
 4. Xóa tất cả khi xong: `kubectl delete -f .` trong thư mục Workload hoặc `kubectl delete ns demo` nếu đã tách namespace.
+
+pod hiểu đơn giản là 1 con backend
+Deployment: Là việc triễn khai pod ở số lượng lớn theo replica. Và deployment sẽ ensure rằng việc là số port luôn bằng số replica => nếu pod chết sẽ tự động restart lại pod cho đến khi bằng số lượng replica

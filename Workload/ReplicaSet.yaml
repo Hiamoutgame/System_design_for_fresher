@@ -18,3 +18,5 @@ spec:
       containers:
         - name: php-redis
           image: us-docker.pkg.dev/google-samples/containers/gke/gb-frontend:v5
+
+#ReplicaSet: giữ đúng số Pod theo label selector, nhưng không có cơ chế rollout phiên bản (ít dùng trực tiếp khi đã có Deployment).
